@@ -1,0 +1,21 @@
+{
+  "name": "expressjs-api",
+  "version": "1.0.0",
+  "description": "A basic expressjs REST API project structure",
+  "main": "index.js",
+  "author": "Azhar",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "husky": "^8.0.0",
+    "prettier": "^2.8.6",
+    "typescript": "^5.0.2"
+  }
+}
