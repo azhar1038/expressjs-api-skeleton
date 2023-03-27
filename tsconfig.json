@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
-    "lib": ["ES2018", "dom"],
+    "lib": ["ES2018"],
     "target": "ES2018",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "experimentalDecorators": true,                      /* Enable experimental support for legacy experimental decorators. */
     "emitDecoratorMetadata": true,                       /* Emit design-type metadata for decorated declarations in source files. */
+    "incremental": true,
 
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
@@ -26,6 +27,7 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
