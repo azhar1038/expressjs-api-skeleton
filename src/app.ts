@@ -3,17 +3,21 @@ config({
   path: `.env.${process.env.NODE_ENV || 'development'}`,
 });
 
+import { env, setEnv } from './config/globals';
+setEnv();
+
 import express from 'express';
+import { Server } from './api/server';
+
 import { logger } from './services/logger';
 
-const app = express();
+const app: express.Application = new Server().app;
 
-const PORT = process.env.PORT || 3000;
-
-const server = app.listen(PORT, () => {
-  logger.info(`Server is listening on port ${PORT}`);
+const server = app.listen(env.NODE_PORT, () => {
+  logger.info(`Server is listening at ${env.DOMAIN}:${env.NODE_PORT}`);
 });
 
 server.on('close', () => {
   logger.info('Server has stopped');
+  logger.close();
 });
