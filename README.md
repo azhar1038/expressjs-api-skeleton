@@ -1,6 +1,20 @@
-# Initial setup using yarn
+# API using Express and Typescript
 
-### Initialize the project:
+An MVC architecture based NodeJS API skeleton using Express and Typescript
+
+## Table of Contents
+
+- [Initial setup using yarn](#initial-setup-using-yarn)
+  - [Initialize the project](#initialize-the-project)
+  - [Add Editor config](#add-editor-config)
+  - [Add typescript support](#add-typescript-support)
+  - [Add Eslint](#add-eslint)
+  - [Add Prettier](#add-prettier)
+  - [Add Husky](#add-husky)
+
+## Initial setup using yarn
+
+### Initialize the project
 
 ```shell
 yarn --init
@@ -28,7 +42,7 @@ trim_trailing_whitespace = true
 trim_trailing_whitespace = false
 ```
 
-### Add typescript support:
+### Add typescript support
 
 ```shell
 yarn add -D typescript

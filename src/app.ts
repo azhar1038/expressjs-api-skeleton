@@ -9,12 +9,12 @@ setEnv();
 import express from 'express';
 import { Server } from './api/server';
 
-import { logger } from './services/logger';
+import { logger } from './services/logger-service';
 
 const app: express.Application = new Server().app;
 
 const server = app.listen(env.NODE_PORT, () => {
-  logger.info(`Server is listening at ${env.DOMAIN}:${env.NODE_PORT}`);
+  logger.info(`Server is listening at ${env.DOMAIN}`);
 });
 
 server.on('close', () => {
