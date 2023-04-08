@@ -11,6 +11,7 @@ An MVC architecture based NodeJS API skeleton using Express and Typescript
   - [Add Eslint](#add-eslint)
   - [Add Prettier](#add-prettier)
   - [Add Husky](#add-husky)
+  - [Add lint-staged](#add-lint-staged)
 
 ## Initial setup using yarn
 
@@ -175,4 +176,34 @@ Husky should create a `.husky` folder. Create a file named `pre-commit` here if 
 
 echo -e "\n[Husky] pre-commit hook"
 yarn lint
+```
+
+### Add lint-staged
+
+This can be used to run Prettier on all the staged file which is usefull if someone does not want to use "Format documnet on Save" feature.  
+To install use:
+
+```shell
+yarn add -D lint-staged
+```
+
+Then create a new file named `.lintstagedrc` with following content to get started:
+
+```json
+{
+  "*.ts": ["eslint src/**/*.ts --fix --max-warnings=0", "prettier --write"],
+  "*.{js,md}": ["prettier --write"]
+}
+```
+
+This instructs lint-staged to run eslint as well as prettier on staged ts files. `--max-warnings=0` is used to abort commit if eslint just gives warnings like unused imports or variables. Changes done by `lint-staged` are automatically added to git, so no need to run `git add .`
+
+Then modify the `package.json` lint script to use lint-stage instead of eslint
+
+```json
+{
+  "scripts": {
+    "lint": "lint-staged"
+  }
+}
 ```
