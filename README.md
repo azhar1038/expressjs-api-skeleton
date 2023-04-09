@@ -4,6 +4,7 @@ An MVC architecture based NodeJS API skeleton using Express and Typescript
 
 ## Table of Contents
 
+- [Technologies and Libraries used](#technologies-and-libraries-used)
 - [Initial setup using yarn](#initial-setup-using-yarn)
   - [Initialize the project](#initialize-the-project)
   - [Add Editor config](#add-editor-config)
@@ -12,6 +13,28 @@ An MVC architecture based NodeJS API skeleton using Express and Typescript
   - [Add Prettier](#add-prettier)
   - [Add Husky](#add-husky)
   - [Add lint-staged](#add-lint-staged)
+- [Project Structure](#project-structure)
+  - [`api` folder](#api-folder)
+  - [`config` folder](#config-folder)
+  - [`services` folder](#services-folder)
+  - [`test` folder](#test-folder)
+
+## Technologies and Libraries used
+
+- NodeJS
+- Typescript
+- Yarn
+- bcrypt
+- cors
+- dotenv
+- express
+- jsonwebtoken
+- winston
+- eslint
+- husky
+- lint-staged
+- prettier
+- tsx
 
 ## Initial setup using yarn
 
@@ -207,3 +230,74 @@ Then modify the `package.json` lint script to use lint-stage instead of eslint
   }
 }
 ```
+
+## Project Structure
+
+The main folder here is the `src` folder with following structure:
+
+```
+src
+├───api
+│   ├───helper
+│   ├───middleware
+│   └───v1
+│       └───components
+│           ├───auth
+│           └───user
+├───config
+├───services
+└───test
+```
+
+Here there are 4 main folders: `api`, `config`, `services` and `test`.
+
+### `api` folder
+
+This folder contains all API related stuff.
+
+```
+api
+│   server.ts
+│
+├───helper
+│       component-routes.ts
+│
+├───middleware
+│       auth-middleware.ts
+│       index.ts
+│
+└───v1
+    │   index.ts
+    │
+    └───components
+        │   components.ts
+        │
+        ├───auth
+        │       auth-controller.ts
+        │       auth-routes.ts
+        │
+        └───user
+                user-controller.ts
+                user-routes.ts
+```
+
+The `helper` folder contains some interfaces.  
+`middleware` folder contains the common middlewares like cors and auhenticate.  
+I have used `v1` to represent API version. For new version add v2 folder when needed. Try to avoid creating new version and instead update v1 with backward compatibility.
+
+#### `components` folder
+
+`components` folder is the main folder containing all the api routes. Each component like user, auth are in their own respective folder. Each component contains `controller` and `routes` file.  
+`routes` file define all the routes while `controller` defines all the logic. Test files can also be placed here
+
+### `config` folder
+
+This folder contains all global configuration related stuff and constants.
+
+### `services` folder
+
+This is also an important folder that provides classes/functions that act as an interface to 3rd party libraries or some common functions. It is usually advised to use services from other services or from controller only to create a proper separation of concerns and for better testability. This also makes sure that in future we can easily switch any 3rd party library with another if required.
+
+### `test` folder
+
+This contains the test files.
