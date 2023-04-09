@@ -249,7 +249,7 @@ src
 └───test
 ```
 
-Here there are 4 main folders: `api`, `config`, `services` and `test`.
+Here there are 4 main folders: `api`, `config`, `services` and `test`. There will be one more folder `models` but I have not added that in this skeleton.
 
 ### `api` folder
 
